@@ -1,6 +1,9 @@
 local nvimtree = require 'nvim-tree'
 local lualine = require 'lualine'
 local telescope = require 'telescope'
+local aerial = require 'aerial'
+local whichkey = require 'which-key'
+local keymaps = require 'vimrc.keymaps'
 
 vim.cmd('colorscheme '..vim.g.colorscheme)
 
@@ -82,3 +85,12 @@ lualine.setup {
 }
 
 telescope.setup {}
+
+aerial.setup {
+    default_direction = 'left',
+    on_attach = function(bufnr)
+        for mode, mappings in pairs(keymaps.aerial) do
+            whichkey.register(mappings, { mode = mode, buffer = bufnr })
+        end
+    end
+}

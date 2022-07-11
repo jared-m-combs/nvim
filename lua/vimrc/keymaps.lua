@@ -38,8 +38,8 @@ keymaps.common = {
             },
             e = {
                 name = 'explore',
-                e = { '<cmd>NvimTreeFocus<CR>', 'Open/Focus nvimtree' },
-                d = { '<cmd>NvimTreeClose<CR>', 'Close nvimtree' },
+                e = { '<cmd>NvimTreeFocus<CR>', 'Open/Focus file tree' },
+                d = { '<cmd>NvimTreeClose<CR>', 'Close file tree' },
             },
             f = {
                 name = 'find',
@@ -80,6 +80,16 @@ keymaps.common = {
             vim.api.nvim_replace_termcodes('<C-\\><C-N>', true, true, true),
             'Escape terminal mode',
         },
+    }
+}
+
+keymaps.aerial = {
+    n = {
+        ['<leader>'] = {
+            e = {
+                o = { '<cmd>AerialToggle!<CR>', 'Toggle outline'}
+            }
+        }
     }
 }
 

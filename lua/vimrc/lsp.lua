@@ -3,6 +3,7 @@ local lsp_config = require 'lspconfig'
 local util = require 'lspconfig.util'
 local cmp_nvim_lsp = require 'cmp_nvim_lsp'
 local whichkey = require 'which-key'
+local aerial = require 'aerial'
 local keymaps = require 'vimrc.keymaps'
 local cfg = {}
 
@@ -60,8 +61,9 @@ cfg.pyright = {}
 
 cfg.zls = {}
 
-local function on_attach(_, bufnr)
+local function on_attach(client, bufnr)
     vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+    aerial.on_attach(client, bufnr)
     for mode, mappings in pairs(keymaps.lsp) do
         whichkey.register(mappings, { mode = mode, buffer = bufnr })
     end
