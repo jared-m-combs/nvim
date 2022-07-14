@@ -64,8 +64,8 @@ keymaps.common = {
             },
             t = {
                 name = 'terminal',
-                t = { '<C-w>s<cmd>terminal<CR><cmd>resize 25<CR>', 'Open terminal' },
-                v = { '<C-w>v<cmd>terminal<CR>', 'Open vertical split terminal' },
+                t = { '<C-w>s<cmd>lcd %:p:h<CR><cmd>terminal<CR><cmd>resize 25<CR>', 'Open terminal' },
+                v = { '<C-w>v<cmd>lcd %:p:h<CR><cmd>terminal<CR>', 'Open vertical split terminal' },
             },
             wk = { '<cmd>WhichKey<CR>', 'Show keymaps' },
         },

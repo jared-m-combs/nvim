@@ -27,7 +27,7 @@ require('packer').startup({{
     'hrsh7th/cmp-path',                    -- path completion source
     'hrsh7th/cmp-cmdline',                 -- command completion source
     'L3MON4D3/LuaSnip',                    -- snippet engine
-    'folke/which-key.nvim',                -- key mappingsager
+    'folke/which-key.nvim',                -- key mappings
 
     -- syntax analysis
     { 'nvim-treesitter/nvim-treesitter', run = ':silent! TSUpdate' },
