@@ -12,7 +12,10 @@ lsp_installer.setup {
         'lua',
         'tsserver',
         'eslint',
+        'gopls',
+        'golangci_lint_ls',
         'pyright',
+        'rust_analyzer',
         'zls'
     },
     automatic_installation = true,
@@ -57,8 +60,10 @@ cfg.eslint = {
     end
 }
 
+cfg.gopls = {}
+cfg.golangci_lint_ls = {}
 cfg.pyright = {}
-
+cfg.rust_analyzer = {}
 cfg.zls = {}
 
 local function on_attach(client, bufnr)

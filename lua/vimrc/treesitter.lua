@@ -11,6 +11,7 @@ treesitter.setup {
         'make',
         'python',
         'yaml',
+        'rust',
         'zig'
     },
     highlight = {
