@@ -40,6 +40,14 @@ require('packer').startup({{
     { 'lifepillar/vim-solarized8', opt = true },
     { 'catppuccin/nvim',           opt = true, as = 'catppuccin.nvim' },
 
+    -- markdown live preview 
+    {
+        "iamcco/markdown-preview.nvim",
+        run = "cd app && npm install",
+        setup = function() vim.g.mkdp_filetypes = { "markdown" } end,
+        ft = { "markdown" },
+    },
+
     -- package manager
     {
         'wbthomason/packer.nvim',
