@@ -1,8 +1,6 @@
 vim.g.colorscheme = 'my.gruvbox'              -- colorscheme
 vim.g.mapleader = ' '                         -- the <leader> character used in mappings
 vim.g.autocompletion = 1                      -- enable/disable autocompletion
-vim.g.did_load_filetypes = 0                  -- disable filetype.vim
-vim.g.do_filetype_lua = 1                     -- enabled filetype.lua
 vim.o.shell = '/usr/bin/zsh'                  -- set the shell
 vim.o.foldmethod = 'expr'                     -- fold code by evalulating an expression
 vim.o.foldexpr = 'nvim_treesitter#foldexpr()' -- enable treesitter based code folding
