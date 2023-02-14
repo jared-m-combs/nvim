@@ -2,6 +2,11 @@ local autocmd = vim.api.nvim_create_autocmd
 local augroup = vim.api.nvim_create_augroup
 local vimrc = augroup('vimrc', { clear = true })
 
+-- open nvim-tree at startup
+autocmd('VimEnter', {
+    callback = function() require('nvim-tree.api').tree.open() end
+})
+
 -- don't show line numbers on terminal and start in insert mode
 autocmd('TermOpen', {
     group = vimrc,

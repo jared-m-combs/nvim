@@ -18,7 +18,8 @@ require('packer').startup({{
     'nvim-lua/plenary.nvim',               -- utility library
     'nvim-telescope/telescope.nvim',       -- search functions
     'stevearc/aerial.nvim',                -- code outline window
-    'williamboman/nvim-lsp-installer',     -- install language servers
+    'williamboman/mason.nvim',             -- install language servers
+    'williamboman/mason-lspconfig.nvim',   -- mason lsp configuration
     'neovim/nvim-lspconfig',               -- config language servers
     'hrsh7th/nvim-cmp',                    -- autocompletion
     'hrsh7th/cmp-nvim-lsp',                -- lsp completion source

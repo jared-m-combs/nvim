@@ -1,15 +1,18 @@
-local lsp_installer = require 'nvim-lsp-installer'
+local mason = require 'mason'
+local mason_lspconfig = require 'mason-lspconfig'
 local lsp_config = require 'lspconfig'
 local util = require 'lspconfig.util'
 local cmp_nvim_lsp = require 'cmp_nvim_lsp'
 local whichkey = require 'which-key'
-local aerial = require 'aerial'
+-- local aerial = require 'aerial'
 local keymaps = require 'vimrc.keymaps'
 local cfg = {}
 
-lsp_installer.setup {
+mason.setup {}
+
+mason_lspconfig.setup {
     ensure_installed = {
-        'lua',
+        'lua_ls',
         'tsserver',
         'eslint',
         'gopls',
@@ -22,7 +25,7 @@ lsp_installer.setup {
     max_concurrent_installers = 10,
 }
 
-cfg.sumneko_lua = {
+cfg.lua_ls = {
     settings = {
         Lua = {
             diagnostics = {
@@ -68,7 +71,7 @@ cfg.zls = {}
 
 local function on_attach(client, bufnr)
     vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
-    aerial.on_attach(client, bufnr)
+    -- aerial.on_attach(client, bufnr)
     for mode, mappings in pairs(keymaps.lsp) do
         whichkey.register(mappings, { mode = mode, buffer = bufnr })
     end
@@ -76,7 +79,7 @@ end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 if vim.g.autocompletion ~= 0 then
-    cmp_nvim_lsp.update_capabilities(capabilities)
+    capabilities = cmp_nvim_lsp.default_capabilities()
 end
 
 for name, options in pairs(cfg) do

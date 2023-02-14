@@ -8,7 +8,6 @@ local keymaps = require 'vimrc.keymaps'
 vim.cmd('colorscheme '..vim.g.colorscheme)
 
 nvimtree.setup {
-    open_on_setup = true,
     hijack_cursor = true,
     update_focused_file = {
         enable = true,
