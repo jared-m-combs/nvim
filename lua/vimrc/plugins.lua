@@ -1,6 +1,4 @@
-vim.cmd 'packadd packer.nvim'
-
-require('packer').startup({{
+require('lazy').setup({
     'tpope/vim-commentary',                -- toggle comments
     'tpope/vim-surround',                  -- toggle quotes, brackets, parens
     'tpope/vim-fugitive',                  -- git commands
@@ -31,43 +29,24 @@ require('packer').startup({{
     'folke/which-key.nvim',                -- key mappings
 
     -- syntax analysis
-    { 'nvim-treesitter/nvim-treesitter', run = ':silent! TSUpdate' },
-    { 'nvim-treesitter/nvim-treesitter-textobjects', after = 'nvim-treesitter' },
+    {
+        'nvim-treesitter/nvim-treesitter',
+        build = ':silent! TSUpdate',
+        dependencies = {'nvim-treesitter/nvim-treesitter-textobjects'}
+    },
 
     -- colorschemes
-    { 'gruvbox-community/gruvbox', opt = true },
-    { 'folke/tokyonight.nvim',     opt = true },
-    { 'joshdick/onedark.vim',      opt = true },
-    { 'lifepillar/vim-solarized8', opt = true },
-    { 'catppuccin/nvim',           opt = true, as = 'catppuccin.nvim' },
+    { 'gruvbox-community/gruvbox', lazy = true },
+    { 'folke/tokyonight.nvim',     lazy = true },
+    { 'joshdick/onedark.vim',      lazy = true },
+    { 'lifepillar/vim-solarized8', lazy = true },
+    { 'catppuccin/nvim',           lazy = true, name = 'catppuccin' },
 
     -- markdown live preview 
     {
         "iamcco/markdown-preview.nvim",
-        run = "cd app && npm install",
-        setup = function() vim.g.mkdp_filetypes = { "markdown" } end,
+        build = "cd app && npm install",
+        init = function() vim.g.mkdp_filetypes = { "markdown" } end,
         ft = { "markdown" },
     },
-
-    -- package manager
-    {
-        'wbthomason/packer.nvim',
-        opt = true,
-        cmd = {
-            'PackerSnapshot',
-            'PackerSnapshotRollback',
-            'PackerSnapshotDelete',
-            'PackerInstall',
-            'PackerUpdate',
-            'PackerSync',
-            'PackerClean',
-            'PackerCompile',
-            'PackerStatus',
-            'PackerProfile',
-            'PackerLoad',
-        },
-        config = function()
-            require 'vimrc.plugins'
-        end
-    },
-}})
+})

@@ -1,5 +1,6 @@
 require 'vimrc.options'
 require('vimrc.bootstrap')(function ()
+    require 'vimrc.plugins'
     require 'vimrc.autocmd'
     require 'vimrc.keymaps'
     require 'vimrc.treesitter'

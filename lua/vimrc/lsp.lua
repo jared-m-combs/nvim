@@ -12,13 +12,14 @@ mason.setup {}
 
 mason_lspconfig.setup {
     ensure_installed = {
+        'ltex',
         'lua_ls',
-        'tsserver',
         'eslint',
         'gopls',
         'golangci_lint_ls',
         'pyright',
         'rust_analyzer',
+        'tsserver',
         'zls'
     },
     automatic_installation = true,
@@ -63,8 +64,10 @@ cfg.eslint = {
     end
 }
 
+
 cfg.gopls = {}
 cfg.golangci_lint_ls = {}
+cfg.ltex = {}
 cfg.pyright = {}
 cfg.rust_analyzer = {}
 cfg.zls = {}

@@ -1,22 +1,25 @@
-local PACKER_GIT_REPO = 'https://github.com/wbthomason/packer.nvim'
-local PACKER_PATH = vim.fn.stdpath('data') .. '/site/pack/packer/opt/packer.nvim'
+local LAZY_GIT_REPO = 'https://github.com/folke/lazy.nvim.git'
+local LAZY_PATH = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'
 
 return function(callback)
-    if string.len(vim.fn.glob(PACKER_PATH)) > 0 then
+    vim.opt.rtp:prepend(LAZY_PATH)
+
+    if vim.loop.fs_stat(LAZY_PATH) then
         callback()
         return
     end
+
     vim.api.nvim_create_autocmd('User', {
-        pattern = 'PackerComplete',
+        pattern = 'LazySync',
         callback = function(args)
             vim.api.nvim_del_autocmd(args.id)
-            vim.cmd 'runtime! plugin/**/*.vim'
-            vim.cmd 'runtime! plugin/**/*.lua'
+            -- vim.cmd 'runtime! plugin/**/*.vim'
+            -- vim.cmd 'runtime! plugin/**/*.lua'
             callback()
         end
     })
-    vim.fn.system { 'git', 'clone', '--depth', '1', PACKER_GIT_REPO, PACKER_PATH }
-    vim.cmd 'packadd packer.nvim'
-    vim.cmd 'runtime lua/vimrc/plugins.lua'
-    vim.cmd 'PackerSync'
+
+    vim.fn.system { 'git', 'clone', '--filter=blob:none', '--depth', '1', LAZY_GIT_REPO, '--branch=stable', LAZY_PATH }
+    require('vimrc.plugins')
+    -- vim.cmd 'Lazy sync'
 end

@@ -1,7 +1,6 @@
 vim.g.gruvbox_bold = 0
 vim.g.gruvbox_sign_column = 'bg0'
 vim.g.gruvbox_invert_selection = 0
-vim.cmd 'packadd gruvbox'
 vim.cmd 'runtime colors/gruvbox.vim'
 require('lualine').setup { options = { theme = 'gruvbox' } }
 
